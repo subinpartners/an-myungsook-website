@@ -18,7 +18,7 @@ document.addEventListener('keydown', (event) => {
     menu.focus();
   }
 });
-window.matchMedia('(min-width: 601px)').addEventListener('change', closeMenu);
+window.matchMedia('(min-width: 761px)').addEventListener('change', closeMenu);
 document.querySelector('#year').textContent = new Date().getFullYear();
 
 // 공통 스크립트 위치를 기준으로 하위 폴더에서도 같은 연락처로 연결합니다.
@@ -71,7 +71,7 @@ if (latestPosts) {
           const card = document.createElement('a');
           card.className = 'story-card latest-card';
           card.href = post.url ? new URL(String(post.url), new URL('story/', location.href)).href
-            : (["market-four-signals-20261111","first-story-20260829","behind-package-20260829"].includes(post.id) ? 'story/' + encodeURIComponent(post.id) + '.html' : 'story/post.html?id=' + encodeURIComponent(post.id || ''));
+            : (["market-four-signals-20261111","first-story-20260829"].includes(post.id) ? 'story/' + encodeURIComponent(post.id) + '.html' : 'story/post.html?id=' + encodeURIComponent(post.id || ''));
           const date = textElement('time', 'category', String(post.date || ''));
           date.dateTime = String(post.date || '');
           card.append(date, textElement('h3', '', post.title || '(제목 없음)'),
