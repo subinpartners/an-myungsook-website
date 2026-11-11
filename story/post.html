@@ -207,7 +207,22 @@
     }
     art.appendChild(head);
     art.appendChild(el('hr','rule'));
-    art.appendChild(renderBody(post.body));
+    var body = renderBody(post.body);
+    // Optional local article image; keep body textContent rendering unchanged.
+    var image = post.image;
+    if (image && typeof image.src === 'string' &&
+        /^assets\/[a-zA-Z0-9_-]+\.(?:jpg|jpeg|png|webp)$/.test(image.src)){
+      var img = el('img');
+      img.src = image.src;
+      img.alt = String(image.alt || '');
+      img.decoding = 'async';
+      img.style.maxWidth = '100%';
+      img.style.height = 'auto';
+      img.style.display = 'block';
+      var after = Number.isInteger(image.afterBlock) && image.afterBlock > 0 ? image.afterBlock : 1;
+      body.insertBefore(img, body.children[after] || null);
+    }
+    art.appendChild(body);
     var faq = Array.isArray(post.faq) ? post.faq.filter(function(f){ return f && f.q && f.a; }) : [];
     if (faq.length) art.appendChild(renderFaq(faq));
     if (Array.isArray(post.sources) && post.sources.length) art.appendChild(renderSources(post.sources));
