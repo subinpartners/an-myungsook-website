@@ -3,18 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>이야기</title>
-<meta name="description" content="">
+<title>글 상세 | 안명숙의 이야기</title>
+<meta name="description" content="안명숙의 부동산 인사이트와 일하는 이야기를 읽어보세요. 글의 게시일과 본문, 관련 질문과 답변을 안내합니다.">
 <meta name="author" content="">
-<link rel="canonical" href="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="">
-<meta property="og:description" content="">
-<meta property="og:url" content="">
+<meta property="og:title" content="글 상세 | 안명숙의 이야기">
+<meta property="og:description" content="안명숙의 부동산 인사이트와 일하는 이야기를 읽어보세요. 글의 게시일과 본문, 관련 질문과 답변을 안내합니다.">
+<meta property="og:url" content="https://subinpartners.github.io/an-myungsook-website/story/post.html">
 <meta name="theme-color" content="#f4f0e9">
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="blog.css">
 <script src="../script.js" defer></script>
+<link rel="canonical" href="https://subinpartners.github.io/an-myungsook-website/story/post.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"이야기 글 상세","url":"https://subinpartners.github.io/an-myungsook-website/story/post.html"}</script>
 </head>
 
 <body id="top">
@@ -95,9 +96,10 @@
   }
 
   function setMeta(post){
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function(n){try {var t=JSON.parse(n.textContent)['@type'];if(t==='BlogPosting'||t==='FAQPage'||t==='BreadcrumbList')n.remove();}catch(e){}});
     var title = String(post.title || '이야기');
     var desc = String(post.description || post.summary || '').slice(0, 160);
-    var url = location.origin + location.pathname + '?id=' + encodeURIComponent(post.id || '');
+    var url = "https://subinpartners.github.io/an-myungsook-website/story/" + (["market-four-signals-20261111","first-story-20260829","behind-package-20260829"].includes(post.id) ? encodeURIComponent(post.id) + '.html' : 'post.html?id=' + encodeURIComponent(post.id || ''));
     var author = String(post.author || '').trim();
     document.title = title + ' — 안명숙의 이야기';
     setAttr('meta[name="description"]', 'content', desc);
@@ -135,7 +137,7 @@
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: '이야기', item: location.origin + location.pathname.replace(/post\.html$/, '') },
+        { '@type': 'ListItem', position: 1, name: '이야기', item: "https://subinpartners.github.io/an-myungsook-website/story/" },
         { '@type': 'ListItem', position: 2, name: title, item: url }
       ]
     });
@@ -224,7 +226,7 @@
       cell(next, 'next', '다음 글');
       art.appendChild(nav);
     }
-    main.appendChild(art);
+    main.replaceChildren(art);
   }
 
   fetch('posts.json', {cache:'no-store'})

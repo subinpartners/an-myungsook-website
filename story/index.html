@@ -3,12 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>이야기 — 안명숙</title>
-<meta name="description" content="안명숙의 공간을 바라보는 시선과 일하며 쌓아가는 기록.">
+<title>이야기 | 안명숙의 부동산 인사이트와 일하는 기록</title>
+<meta name="description" content="안명숙의 부동산 시장 인사이트와 공간을 바라보는 시선, 일하는 이야기를 읽어보세요. 게시일별 글과 상세 내용을 안내합니다.">
 <meta name="theme-color" content="#f4f0e9">
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="blog.css">
 <script src="../script.js" defer></script>
+<link rel="canonical" href="https://subinpartners.github.io/an-myungsook-website/story/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"안명숙의 이야기","url":"https://subinpartners.github.io/an-myungsook-website/story/","inLanguage":"ko"}</script>
 </head>
 
 <body id="top">
@@ -30,7 +32,7 @@
     <h1>도시와 일, 그리고 이야기.</h1>
     <p>공간을 바라보는 시선과 일하며 쌓아가는 기록.</p>
   </section>
-  <ul class="list" id="list"></ul>
+  <ul class="list" id="list"><li class="card"><a href="market-four-signals-20261111.html"><time datetime="2026-11-11">2026-11-11</time><h2>부동산 거래가 줄었을 때, 가격보다 먼저 볼 네 가지</h2><p class="summary">거래가 뜸할 때 가격만으로 판단하지 않고 거래량·구매력·공급과 수요·변화의 지속성을 함께 살펴봅니다.</p></a></li><li class="card"><a href="first-story-20260829.html"><time datetime="2026-08-20">2026-08-20</time><h2>우리가 이 브랜드를 시작한 이유</h2><p class="summary">작은 불편에서 시작된 고민이 어떻게 하나의 브랜드가 되었는지, 그 첫 마음을 기록합니다.</p></a></li><li class="card"><a href="behind-package-20260829.html"><time datetime="2026-08-14">2026-08-14</time><h2>패키지 하나를 바꾸는 데 석 달이 걸린 이야기</h2><p class="summary">고객의 한 줄 후기에서 시작된 패키지 개선 프로젝트. 사소해 보이는 디테일에 오래 머문 이유를 적었습니다.</p></a></li></ul>
 </main>
 <script>
 (function(){
@@ -60,10 +62,11 @@
     posts = posts.slice().sort(function(a,b){
       return String(b.date||'').localeCompare(String(a.date||''));
     });
+    list.replaceChildren();
     posts.forEach(function(p){
       var li = el('li','card');
       var a = el('a');
-      a.href = p.url ? String(p.url) : 'post.html?id=' + encodeURIComponent(p.id || '');
+      a.href = p.url ? String(p.url) : (["market-four-signals-20261111","first-story-20260829","behind-package-20260829"].includes(p.id) ? encodeURIComponent(p.id) + '.html' : 'post.html?id=' + encodeURIComponent(p.id || ''));
       var t = el('time', null, fmtDate(p.date));
       t.setAttribute('datetime', String(p.date||''));
       a.appendChild(t);

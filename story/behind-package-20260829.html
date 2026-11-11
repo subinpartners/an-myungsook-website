@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>패키지 하나를 바꾸는 데 석 달이 걸린 이야기 | 안명숙의 이야기</title>
+<meta name="description" content="고객의 한 줄 후기에서 시작된 패키지 개선 프로젝트. 사소해 보이는 디테일에 오래 머문 이유를 적었습니다.">
+<meta name="author" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="패키지 하나를 바꾸는 데 석 달이 걸린 이야기 | 안명숙의 이야기">
+<meta property="og:description" content="고객의 한 줄 후기에서 시작된 패키지 개선 프로젝트. 사소해 보이는 디테일에 오래 머문 이유를 적었습니다.">
+<meta property="og:url" content="https://subinpartners.github.io/an-myungsook-website/story/behind-package-20260829.html">
+<meta name="theme-color" content="#f4f0e9">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="blog.css">
+<script src="../script.js" defer></script>
+<link rel="canonical" href="https://subinpartners.github.io/an-myungsook-website/story/behind-package-20260829.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"패키지 하나를 바꾸는 데 석 달이 걸린 이야기","description":"고객의 한 줄 후기에서 시작된 패키지 개선 프로젝트. 사소해 보이는 디테일에 오래 머문 이유를 적었습니다.","datePublished":"2026-08-14","dateModified":"2026-08-14","mainEntityOfPage":"https://subinpartners.github.io/an-myungsook-website/story/behind-package-20260829.html","inLanguage":"ko"}</script>
+</head>
+
+<body id="top">
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<header class="header wrap">
+    <a class="brand" href="../index.html" aria-label="안명숙 홈">안명숙<span>REAL ESTATE & STORIES</span></a>
+    <button class="menu" aria-expanded="false" aria-controls="navigation">메뉴 <span aria-hidden="true">＋</span></button>
+    <nav id="navigation" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../about.html">내 소개</a><a href="./" aria-current="page">이야기</a><a class="nav-contact" href="../index.html#contact">연락하기 <span aria-hidden="true">↗</span></a></nav>
+  </header>
+
+<div class="blog-wrap">
+  <div class="top"><a class="back" href="index.html">&larr; 목록으로</a></div>
+  <main id="main"><article><header class="post-head"><time datetime="2026-08-14">2026-08-14</time><h1>패키지 하나를 바꾸는 데 석 달이 걸린 이야기</h1></header><hr class="rule"><div class="body"><p>&quot;뜯기가 조금 불편해요.&quot; 어느 날 도착한 한 줄 후기가 모든 것의 시작이었습니다.</p>
+<h2>후기 한 줄의 무게</h2>
+<p>한 분이 남긴 불편은 말하지 않은 열 분의 불편이라고 생각했습니다. 그래서 포장을 처음부터 다시 들여다봤습니다.</p>
+<h2>석 달간 바꾼 것들</h2>
+<ul><li>개봉선 위치를 손이 자연스럽게 가는 곳으로 이동</li><li>재활용 가능한 소재로 전면 교체</li><li>안내 문구를 줄이고 글자를 키움</li></ul>
+<p>결과는 단순해 보이지만, 그 단순함에 도달하는 데 석 달이 걸렸습니다. 좋은 물건은 디테일이 말해준다고 믿습니다.</p></div><nav class="pn"><a href="./">모든 이야기 보기</a></nav></article></main>
+</div>
+<script>
+(function(){
+  var main = document.getElementById('main');
+
+  function el(tag, cls, text){
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  function fmtDate(s){
+    var d = new Date(s + 'T00:00:00');
+    if (isNaN(d)) return s || '';
+    return d.getFullYear() + '. ' + (d.getMonth()+1) + '. ' + d.getDate() + '.';
+  }
+
+  // 초경량 마크다운: 빈 줄=문단, "## "=소제목, "- "=리스트. 전부 textContent로 삽입(XSS-safe).
+  function renderBody(src){
+    var box = el('div','body');
+    var blocks = String(src || '').replace(/\r\n/g,'\n').split(/\n\s*\n/);
+    blocks.forEach(function(block){
+      block = block.trim();
+      if (!block) return;
+      var lines = block.split('\n');
+      if (lines.every(function(l){ return /^- /.test(l.trim()); })){
+        var ul = el('ul');
+        lines.forEach(function(l){ ul.appendChild(el('li', null, l.trim().slice(2))); });
+        box.appendChild(ul);
+      } else if (/^## /.test(block)){
+        box.appendChild(el('h2', null, block.slice(3).trim()));
+      } else {
+        box.appendChild(el('p', null, block));
+      }
+    });
+    return box;
+  }
+
+  function notFound(){
+    var d = el('div','notfound');
+    d.appendChild(el('h1', null, '글을 찾을 수 없습니다'));
+    d.appendChild(el('p', null, '주소가 잘못되었거나 삭제된 글일 수 있어요.'));
+    var a = el('a', null, '글 목록으로 돌아가기');
+    a.href = 'index.html';
+    d.appendChild(a);
+    main.appendChild(d);
+  }
+
+  function hrefOf(p){
+    return p.url ? String(p.url) : 'post.html?id=' + encodeURIComponent(p.id || '');
+  }
+
+  function setAttr(sel, attr, val){
+    var n = document.querySelector(sel);
+    if (n) n.setAttribute(attr, val);
+  }
+
+  function addLd(obj){
+    var ld = document.createElement('script');
+    ld.type = 'application/ld+json';
+    ld.textContent = JSON.stringify(obj);
+    document.head.appendChild(ld);
+  }
+
+  function setMeta(post){
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function(n){try {var t=JSON.parse(n.textContent)['@type'];if(t==='BlogPosting'||t==='FAQPage'||t==='BreadcrumbList')n.remove();}catch(e){}});
+    var title = String(post.title || '이야기');
+    var desc = String(post.description || post.summary || '').slice(0, 160);
+    var url = "https://subinpartners.github.io/an-myungsook-website/story/" + (["market-four-signals-20261111","first-story-20260829","behind-package-20260829"].includes(post.id) ? encodeURIComponent(post.id) + '.html' : 'post.html?id=' + encodeURIComponent(post.id || ''));
+    var author = String(post.author || '').trim();
+    document.title = title + ' — 안명숙의 이야기';
+    setAttr('meta[name="description"]', 'content', desc);
+    setAttr('meta[name="author"]', 'content', author);
+    setAttr('link[rel="canonical"]', 'href', url);
+    setAttr('meta[property="og:title"]', 'content', title);
+    setAttr('meta[property="og:description"]', 'content', desc);
+    setAttr('meta[property="og:url"]', 'content', url);
+
+    var article = {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: title,
+      description: desc,
+      datePublished: String(post.date || ''),
+      dateModified: String(post.updated || post.date || ''),
+      mainEntityOfPage: url,
+      keywords: Array.isArray(post.tags) ? post.tags.map(String).join(', ') : ''
+    };
+    if (author) article.author = { '@type': 'Person', name: author };
+    addLd(article);
+
+    var faq = Array.isArray(post.faq) ? post.faq.filter(function(f){ return f && f.q && f.a; }) : [];
+    if (faq.length){
+      addLd({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faq.map(function(f){
+          return { '@type': 'Question', name: String(f.q),
+                   acceptedAnswer: { '@type': 'Answer', text: String(f.a) } };
+        })
+      });
+    }
+    addLd({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: '이야기', item: "https://subinpartners.github.io/an-myungsook-website/story/" },
+        { '@type': 'ListItem', position: 2, name: title, item: url }
+      ]
+    });
+  }
+
+  function renderFaq(faq){
+    var sec = el('section','faq');
+    sec.appendChild(el('h2', null, '자주 묻는 질문'));
+    faq.forEach(function(f){
+      var d = el('details');
+      d.appendChild(el('summary', null, String(f.q)));
+      d.appendChild(el('p', null, String(f.a)));
+      sec.appendChild(d);
+    });
+    return sec;
+  }
+
+  function renderSources(sources){
+    var sec = el('section','sources');
+    sec.appendChild(el('h2', null, '참고·출처'));
+    var ol = el('ol');
+    sources.forEach(function(s){
+      var li = el('li');
+      if (s && s.url){
+        var a = el('a', null, String(s.title || s.url));
+        a.href = String(s.url); a.rel = 'noopener'; a.target = '_blank';
+        li.appendChild(a);
+      } else {
+        li.textContent = String(s && s.title || s || '');
+      }
+      ol.appendChild(li);
+    });
+    sec.appendChild(ol);
+    return sec;
+  }
+
+  function render(posts){
+    var qs = new URLSearchParams(location.search);
+    var id = qs.get('id') || qs.get('slug') || "behind-package-20260829";
+    posts = (Array.isArray(posts) ? posts : []).slice().sort(function(a,b){
+      return String(b.date||'').localeCompare(String(a.date||''));
+    });
+    var idx = -1;
+    posts.forEach(function(p,i){ if (String(p.id) === id || (p.url && String(p.url).replace(/\.html$/,'') === id)) idx = i; });
+    if (idx < 0){ notFound(); return; }
+    var post = posts[idx];
+    setMeta(post);
+
+    var art = el('article');
+    var head = el('header','post-head');
+    var t = el('time', null, fmtDate(post.date));
+    t.setAttribute('datetime', String(post.date||''));
+    head.appendChild(t);
+    head.appendChild(el('h1', null, String(post.title || '(제목 없음)')));
+    if (post.author || (post.updated && post.updated !== post.date)){
+      var meta = el('div','meta');
+      if (post.author) meta.appendChild(el('span', null, String(post.author)));
+      if (post.updated && post.updated !== post.date) meta.appendChild(el('span', null, '수정 ' + fmtDate(post.updated)));
+      head.appendChild(meta);
+    }
+    if (Array.isArray(post.tags) && post.tags.length){
+      var tags = el('div','tags');
+      post.tags.forEach(function(tg){ tags.appendChild(el('span','tag', String(tg))); });
+      head.appendChild(tags);
+    }
+    art.appendChild(head);
+    art.appendChild(el('hr','rule'));
+    art.appendChild(renderBody(post.body));
+    var faq = Array.isArray(post.faq) ? post.faq.filter(function(f){ return f && f.q && f.a; }) : [];
+    if (faq.length) art.appendChild(renderFaq(faq));
+    if (Array.isArray(post.sources) && post.sources.length) art.appendChild(renderSources(post.sources));
+
+    var prev = posts[idx+1]; // 더 오래된 글
+    var next = posts[idx-1]; // 더 최신 글
+    if (prev || next){
+      var nav = el('nav','pn');
+      function cell(p, cls, label){
+        if (!p){ nav.appendChild(el('span')); return; }
+        var a = el('a', cls);
+        a.href = hrefOf(p);
+        a.appendChild(el('div','dir', label));
+        a.appendChild(el('div','pn-title', String(p.title || '')));
+        nav.appendChild(a);
+      }
+      cell(prev, 'prev', '이전 글');
+      cell(next, 'next', '다음 글');
+      art.appendChild(nav);
+    }
+    main.replaceChildren(art);
+  }
+
+  fetch('posts.json', {cache:'no-store'})
+    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(render)
+    .catch(function(){ notFound(); });
+})();
+</script>
+
+<footer class="footer wrap"><a class="brand" href="../index.html">안명숙<span>사람과 공간 사이, 가치를 잇다.</span></a><p>© <span id="year">2026</span> 안명숙. All rights reserved.</p><a href="#top">맨 위로 ↑</a></footer>
+
+</body>
+</html>
