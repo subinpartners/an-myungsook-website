@@ -21,6 +21,34 @@ document.addEventListener('keydown', (event) => {
 window.matchMedia('(min-width: 601px)').addEventListener('change', closeMenu);
 document.querySelector('#year').textContent = new Date().getFullYear();
 
+// 공통 스크립트 위치를 기준으로 하위 폴더에서도 같은 연락처로 연결합니다.
+const siteBase = new URL('./', document.currentScript.src);
+const contactMenu = navigation.querySelector('.nav-contact');
+if (contactMenu) {
+  contactMenu.href = new URL('contact.html', siteBase).href;
+  contactMenu.textContent = '연락하기';
+}
+const footer = document.querySelector('footer.footer');
+if (footer) {
+  const links = document.createElement('nav');
+  links.className = 'footer-links';
+  links.setAttribute('aria-label', '이메일 및 SNS');
+  [
+    ['이메일 realams@gmail.com', 'mailto:realams@gmail.com'],
+    ['스레드', 'https://www.threads.net/@anmyungsook'],
+    ['인스타그램', 'https://www.instagram.com/anmyungsook/'],
+    ['유튜브', 'https://www.youtube.com/@RealestateBroadcastingSystem']
+  ].forEach(([label, href]) => {
+    const link = document.createElement('a');
+    link.textContent = label;
+    link.href = href;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    links.append(link);
+  });
+  footer.append(links);
+}
+
 // 홈의 최신 글은 게시 데이터 한 곳에서 관리합니다.
 const latestPosts = document.querySelector('#latest-posts');
 if (latestPosts) {
