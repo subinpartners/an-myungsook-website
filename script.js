@@ -71,7 +71,7 @@ if (latestPosts) {
           const card = document.createElement('a');
           card.className = 'story-card latest-card';
           card.href = post.url ? new URL(String(post.url), new URL('story/', location.href)).href
-            : 'story/post.html?id=' + encodeURIComponent(post.id || '');
+            : (["market-four-signals-20261111","first-story-20260829","behind-package-20260829"].includes(post.id) ? 'story/' + encodeURIComponent(post.id) + '.html' : 'story/post.html?id=' + encodeURIComponent(post.id || ''));
           const date = textElement('time', 'category', String(post.date || ''));
           date.dateTime = String(post.date || '');
           card.append(date, textElement('h3', '', post.title || '(제목 없음)'),

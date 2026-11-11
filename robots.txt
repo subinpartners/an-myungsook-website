@@ -1,0 +1,5 @@
+# GitHub Pages project site: robots.txt is effective only at the host root.
+User-agent: *
+Allow: /an-myungsook-website/
+# Admin uses meta noindex,nofollow; allow crawling so this directive can be read.
+Sitemap: https://subinpartners.github.io/an-myungsook-website/sitemap.xml
