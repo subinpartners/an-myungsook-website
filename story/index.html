@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이야기 — 안명숙</title>
+<meta name="description" content="안명숙의 공간을 바라보는 시선과 일하며 쌓아가는 기록.">
+<meta name="theme-color" content="#f4f0e9">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="blog.css">
+<script src="../script.js" defer></script>
+</head>
+
+<body id="top">
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<header class="header wrap">
+    <a class="brand" href="../index.html" aria-label="안명숙 홈">안명숙<span>REAL ESTATE & STORIES</span></a>
+    <button class="menu" aria-expanded="false" aria-controls="navigation">메뉴 <span aria-hidden="true">＋</span></button>
+    <nav id="navigation" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../about.html">내 소개</a><a href="./" aria-current="page">이야기</a><a class="nav-contact" href="../index.html#contact">연락하기 <span aria-hidden="true">↗</span></a></nav>
+  </header>
+
+<main class="blog-wrap" id="main">
+  <header class="site">
+    <span aria-hidden="true"></span>
+    <a class="admin-link" href="admin.html">관리</a>
+  </header>
+  <section class="blog-hero">
+    <p class="eyebrow">Story</p>
+    <h1>도시와 일, 그리고 이야기.</h1>
+    <p>공간을 바라보는 시선과 일하며 쌓아가는 기록.</p>
+  </section>
+  <ul class="list" id="list"></ul>
+</main>
+<script>
+(function(){
+  var list = document.getElementById('list');
+
+  function el(tag, cls, text){
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  function fmtDate(s){
+    var d = new Date(s + 'T00:00:00');
+    if (isNaN(d)) return s || '';
+    return d.getFullYear() + '. ' + (d.getMonth()+1) + '. ' + d.getDate() + '.';
+  }
+
+  function render(posts){
+    if (!Array.isArray(posts) || posts.length === 0){
+      var empty = el('div','empty');
+      empty.appendChild(el('strong', null, '아직 올라온 글이 없습니다'));
+      empty.appendChild(document.createTextNode('첫 번째 이야기를 준비하고 있어요. 곧 만나요.'));
+      list.replaceWith(empty);
+      return;
+    }
+    posts = posts.slice().sort(function(a,b){
+      return String(b.date||'').localeCompare(String(a.date||''));
+    });
+    posts.forEach(function(p){
+      var li = el('li','card');
+      var a = el('a');
+      a.href = p.url ? String(p.url) : 'post.html?id=' + encodeURIComponent(p.id || '');
+      var t = el('time', null, fmtDate(p.date));
+      t.setAttribute('datetime', String(p.date||''));
+      a.appendChild(t);
+      a.appendChild(el('h2', null, String(p.title || '(제목 없음)')));
+      if (p.summary) a.appendChild(el('p','summary', String(p.summary)));
+      if (Array.isArray(p.tags) && p.tags.length){
+        var tags = el('div','tags');
+        p.tags.forEach(function(tg){ tags.appendChild(el('span','tag', String(tg))); });
+        a.appendChild(tags);
+      }
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+  }
+
+  fetch('posts.json', {cache:'no-store'})
+    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(render)
+    .catch(function(){
+      list.replaceWith(el('div','error','글 목록을 불러오지 못했습니다. 잠시 후 새로고침해 주세요.'));
+    });
+})();
+</script>
+
+<footer class="footer wrap"><a class="brand" href="../index.html">안명숙<span>사람과 공간 사이, 가치를 잇다.</span></a><p>© <span id="year">2026</span> 안명숙. All rights reserved.</p><a href="#top">맨 위로 ↑</a></footer>
+
+</body>
+</html>
