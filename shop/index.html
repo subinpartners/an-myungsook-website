@@ -3,23 +3,60 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>쇼핑</title>
-  <!-- ① 내 사이트 공통 CSS가 있으면 여기에 연결해요. 예) <link rel="stylesheet" href="../assets/style.css"> -->
+  <title>매물 상담 | 안명숙</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../readability.css?v=20261111">
   <link rel="stylesheet" href="shop.css">
+  <style>
+    .property-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+    .property-card { display: flex; flex-direction: column; overflow: hidden; background: #fff; border: 1px solid var(--line); border-radius: 4px; }
+    .property-card img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+    .property-card-content { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 20px; }
+    .property-card h2 { margin: 0; font-size: 24px; }
+    .property-card p { margin: 8px 0 20px; color: var(--muted); font-size: 16px; }
+    .property-card .sk-btn { margin-top: auto; background: var(--ink); border-color: var(--ink); border-radius: 4px; font-family: inherit; }
+    @media (max-width: 760px) { .property-grid { grid-template-columns: 1fr; } }
+  </style>
 </head>
-<body data-shop-page="list">
-  <!-- ② HEADER: 내 사이트 머리(로고·메뉴)를 여기에 그대로 붙여 넣어요. 메뉴에 "쇼핑"(shop/)과 장바구니 링크를 넣어 주세요.
-       장바구니 링크 예) <a href="cart.html" data-shop-cart>장바구니 <span class="sk-count" data-shop-cart-count>0</span></a> -->
-
-  <main class="sk-page">
+<body id="top">
+  <a class="skip" href="#main">본문으로 건너뛰기</a>
+  <header class="header wrap">
+    <a class="brand" href="../index.html" aria-label="안명숙 홈">안명숙<span>REAL ESTATE & STORIES</span></a>
+    <button class="menu" type="button" aria-expanded="false" aria-controls="navigation">메뉴 <span aria-hidden="true">＋</span></button>
+    <nav id="navigation" aria-label="주 메뉴"><a href="../index.html">홈</a><a href="../about.html">내 소개</a><a href="../story/">이야기</a><a href="./" aria-current="page">쇼핑</a><a class="nav-contact" href="../contact.html">연락하기</a></nav>
+  </header>
+  <main id="main">
     <div class="sk-wrap">
-      <div class="sk-head"><div><h1>쇼핑</h1><p>지금 주문할 수 있는 상품이에요.</p></div><div class="sk-chips" data-shop-cats></div></div>
-      <div data-shop-list><div class="sk-empty">상품을 불러오는 중이에요…</div></div>
+      <div class="sk-head"><div><h1>매물 상담</h1><p>관심 있는 공간을 살펴보고 상담을 문의하세요.</p></div></div>
+      <div class="property-grid">
+        <article class="property-card">
+          <img src="images/soom.jpg" width="628" height="502" alt="빌딩 숨 외관">
+          <div class="property-card-content">
+            <h2>빌딩 숨</h2>
+            <p>사옥과 카페, 레스토랑이 함께하는 공간입니다.</p>
+            <a class="sk-btn" href="mailto:realams@gmail.com?subject=빌딩%20숨%20매물%20문의" aria-label="빌딩 숨 문의하기">문의하기</a>
+          </div>
+        </article>
+        <article class="property-card">
+          <img src="images/yesong.jpg" width="964" height="782" alt="예송빌딩 외관">
+          <div class="property-card-content">
+            <h2>예송빌딩</h2>
+            <p>청담 삼성로 모퉁이에 자리한 건물입니다.</p>
+            <a class="sk-btn" href="mailto:realams@gmail.com?subject=예송빌딩%20매물%20문의" aria-label="예송빌딩 문의하기">문의하기</a>
+          </div>
+        </article>
+        <article class="property-card">
+          <img src="images/seongsu.jpg" width="1536" height="1045" alt="성수연방과 주변 전경">
+          <div class="property-card-content">
+            <h2>성수연방</h2>
+            <p>옛 공장의 모습을 간직한 성수동의 복합문화공간입니다.</p>
+            <a class="sk-btn" href="mailto:realams@gmail.com?subject=성수연방%20매물%20문의" aria-label="성수연방 문의하기">문의하기</a>
+          </div>
+        </article>
+      </div>
     </div>
   </main>
-
-  <!-- ③ FOOTER: 내 사이트 바닥글을 여기에 붙여 넣어요. 사업자 정보(상호·대표·사업자번호·통신판매업 신고번호·주소·연락처)를 꼭 적어요. -->
-
-  <script src="shop.js" defer></script>
+  <footer class="footer wrap"><a class="brand" href="../index.html">안명숙<span>사람과 공간 사이, 가치를 잇다.</span></a><p>© <span id="year">2026</span> 안명숙. All rights reserved.</p><a href="#top">맨 위로 ↑</a></footer>
+  <script src="../script.js" defer></script>
 </body>
 </html>
