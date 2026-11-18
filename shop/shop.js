@@ -68,7 +68,8 @@
   function wasPrice(p, d) { var w = Math.max(num(p.listPrice), num(p.price)); return w > basePrice(p, d) ? w : 0; }
   function rate(p, d) { var w = wasPrice(p, d); return w ? Math.floor((1 - basePrice(p, d) / w) * 100) : 0; }
   function hasStock(p) { return p.stock === '' || p.stock === null || p.stock === undefined; }
-  function sellable(p) { return p && p.status !== '숨김' && p.status !== '품절' && (hasStock(p) || num(p.stock) > 0); }
+  function inquiry(p) { return !!p && p.priceMode === 'inquiry'; }
+  function sellable(p) { return p && !inquiry(p) && p.status !== '숨김' && p.status !== '품절' && (hasStock(p) || num(p.stock) > 0); }
   function maxQty(p) { var m = num(p.maxQty) || 99; return hasStock(p) ? m : Math.min(m, num(p.stock)); }
   function shipping(settings, subtotal) {
     if (!subtotal) return 0;
@@ -135,6 +136,7 @@
 
   /* ───────── 공통 조각 ───────── */
   function priceHtml(p, big) {
+    if (inquiry(p)) return '<div class="sk-price"><span class="sk-price__now">문의하기</span></div>';
     var d = today(), was = wasPrice(p, d), r = rate(p, d);
     var h = '<div class="sk-price' + (big ? ' sk-price--big' : '') + '">' +
       (r > 0 ? '<span class="sk-price__rate">' + r + '%</span>' : '') +
@@ -145,13 +147,13 @@
   }
   function badgesHtml(p) {
     var b = [], r = rate(p);
-    if (!sellable(p)) b.push('<span class="sk-badge sk-badge--out">품절</span>');
+    if (!inquiry(p) && !sellable(p)) b.push('<span class="sk-badge sk-badge--out">품절</span>');
     else if (r > 0) b.push('<span class="sk-badge sk-badge--sale">' + r + '% 할인</span>');
     (p.badges || []).forEach(function (x) { b.push('<span class="sk-badge">' + esc(x) + '</span>'); });
     return b.length ? '<div class="sk-badges">' + b.join('') + '</div>' : '';
   }
   function cardHtml(p) {
-    return '<a class="sk-card' + (sellable(p) ? '' : ' is-out') + '" href="' + SHOP + 'product.html?id=' + encodeURIComponent(p.id) + '">' +
+    return '<a class="sk-card' + (sellable(p) || inquiry(p) ? '' : ' is-out') + '" href="' + SHOP + 'product.html?id=' + encodeURIComponent(p.id) + '">' +
       '<div class="sk-card__pic"><img src="' + esc(img((p.images || [])[0])) + '" alt="' + esc(p.name) + '" loading="lazy">' + badgesHtml(p) + '</div>' +
       '<div class="sk-card__body"><div class="sk-card__name">' + esc(p.name) + '</div>' +
       (p.summary ? '<div class="sk-card__sum">' + esc(p.summary) + '</div>' : '') + priceHtml(p) + '</div></a>';
@@ -276,6 +278,19 @@
       var p = find(data, param('id'));
       if (!p || p.status === '숨김') { box.innerHTML = '<div class="sk-empty">찾는 상품이 없어요. <a href="' + SHOP + '">전체 상품 보기</a></div>'; return; }
       setMeta(p.name + ' — ' + (data.store.name || '쇼핑'), p.summary || p.name);
+      if (inquiry(p)) {
+        var inquiryPics = (p.images || []).map(img);
+        box.innerHTML = '<div class="sk-crumb"><a href="' + SHOP + '">전체 상품</a></div>' +
+          '<div class="sk-detail"><div class="sk-gallery"><div class="sk-gallery__main"><img src="' + esc(inquiryPics[0] || '') + '" alt="' + esc(p.name) + '"></div>' +
+          '<div class="sk-thumbs">' + inquiryPics.map(function (u, i) { return '<button type="button" data-inquiry-pic="' + i + '" aria-label="사진 ' + (i + 1) + '"><img src="' + esc(u) + '" alt=""></button>'; }).join('') + '</div></div>' +
+          '<div class="sk-info"><h1>' + esc(p.name) + '</h1><p class="sk-summary">' + esc(p.summary || '') + '</p>' + priceHtml(p, true) +
+          '<dl class="sk-rows">' + (p.specs || []).map(function (r) { return '<div><dt>' + esc(r.k) + '</dt><dd>' + esc(r.v) + '</dd></div>'; }).join('') + '</dl>' +
+          '<a class="sk-btn" href="' + ROOT + 'contact.html">문의하기</a><p class="sk-muted">매물 가격과 거래 조건은 상담으로 안내드립니다.</p></div></div>' +
+          '<section class="sk-md">' + md(p.detail) + '</section>';
+        box.addEventListener('click', function (e) { var b = e.target.closest('[data-inquiry-pic]'); if (b) $('.sk-gallery__main img', box).src = inquiryPics[+b.getAttribute('data-inquiry-pic')]; });
+        return;
+      }
+
       var pics = (p.images && p.images.length ? p.images : ['']).map(img);
       var opts = (p.options || []).map(function () { return ''; });
       var qty = 1, can = sellable(p);
@@ -535,7 +550,7 @@
     load().then(function (data) {
       els.forEach(function (el) {
         var p = find(data, el.getAttribute('data-shop-price')); if (!p) return;
-        el.innerHTML = priceHtml(p) + (sellable(p) ? '' : '<span class="sk-soldout-tag">품절</span>');
+        el.innerHTML = priceHtml(p) + (sellable(p) || inquiry(p) ? '' : '<span class="sk-soldout-tag">품절</span>');
       });
     }).catch(function () {});
   }
@@ -545,6 +560,7 @@
     var id = b.getAttribute('data-shop-add') || b.getAttribute('data-shop-buy'), buy = b.hasAttribute('data-shop-buy');
     load().then(function (data) {
       var p = find(data, id);
+      if (inquiry(p)) { location.href = SHOP + 'product.html?id=' + encodeURIComponent(id); return; }
       if (!p || !sellable(p)) return toast(p ? '품절이에요' : '상품을 찾지 못했어요 (' + id + ')');
       if ((p.options || []).length) { location.href = SHOP + 'product.html?id=' + encodeURIComponent(id); return; }
       add(id, [], 1);

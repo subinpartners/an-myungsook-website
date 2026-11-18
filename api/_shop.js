@@ -28,7 +28,7 @@ export function optionAdd(p, opts) {
 }
 export function unitPrice(p, opts, d) { const a = optionAdd(p, opts); return a === null ? null : basePrice(p, d) + a; }
 const unlimited = (p) => p.stock === '' || p.stock === null || p.stock === undefined;
-export function sellable(p) { return !!p && p.status !== '숨김' && p.status !== '품절' && (unlimited(p) || num(p.stock) > 0); }
+export function sellable(p) { return !!p && p.priceMode !== 'inquiry' && p.status !== '숨김' && p.status !== '품절' && (unlimited(p) || num(p.stock) > 0); }
 export function maxQty(p) { const m = num(p.maxQty) || 99; return unlimited(p) ? m : Math.min(m, num(p.stock)); }
 export function shipping(st, subtotal) {
   if (!subtotal) return 0;
@@ -46,6 +46,7 @@ export function quote(data, items, d = today()) {
     const p = (data.products || []).find((x) => x.id === it.id);
     const qty = Math.floor(num(it.qty));
     if (!p || p.status === '숨김') throw new Error('판매가 끝난 상품이 있어요. 장바구니를 확인해 주세요.');
+    if (p.priceMode === 'inquiry') throw new Error('문의 상품은 온라인 결제가 불가능합니다. 매물 상담을 이용해 주세요.');
     if (!sellable(p)) throw new Error(`${p.name}은(는) 품절이에요.`);
     if (!(qty >= 1) || qty > maxQty(p)) throw new Error(`${p.name} 수량을 확인해 주세요. (최대 ${maxQty(p)}개)`);
     const opts = Array.isArray(it.opts) ? it.opts.map(String) : [];

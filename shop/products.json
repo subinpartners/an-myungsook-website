@@ -8,10 +8,22 @@
     "notice": ""
   },
   "payment": {
-    "bank": { "enabled": true, "bankName": "OO은행", "account": "000-0000-0000-00", "holder": "예금주 이름", "dueHours": 48 },
-    "toss": { "enabled": true, "clientKey": "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm" }
+    "bank": {
+      "enabled": true,
+      "bankName": "OO은행",
+      "account": "000-0000-0000-00",
+      "holder": "예금주 이름",
+      "dueHours": 48
+    },
+    "toss": {
+      "enabled": true,
+      "clientKey": "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm"
+    }
   },
-  "categories": ["대표 상품", "소품"],
+  "categories": [
+    "대표 상품",
+    "소품"
+  ],
   "products": [
     {
       "id": "sample-best",
@@ -27,11 +39,38 @@
       "stock": null,
       "status": "판매중",
       "featured": true,
-      "badges": ["BEST"],
-      "images": ["shop/images/sample-1.svg", "shop/images/sample-2.svg"],
+      "badges": [
+        "BEST"
+      ],
+      "images": [
+        "shop/images/sample-1.svg",
+        "shop/images/sample-2.svg"
+      ],
       "options": [],
-      "specs": [{ "k": "용량", "v": "500g" }, { "k": "원산지", "v": "국내" }],
-      "notice": [{ "k": "제품명", "v": "샘플 상품 500g" }, { "k": "제조국", "v": "대한민국" }, { "k": "소비자상담 연락처", "v": "상점 설정의 문의 연락처" }],
+      "specs": [
+        {
+          "k": "용량",
+          "v": "500g"
+        },
+        {
+          "k": "원산지",
+          "v": "국내"
+        }
+      ],
+      "notice": [
+        {
+          "k": "제품명",
+          "v": "샘플 상품 500g"
+        },
+        {
+          "k": "제조국",
+          "v": "대한민국"
+        },
+        {
+          "k": "소비자상담 연락처",
+          "v": "상점 설정의 문의 연락처"
+        }
+      ],
       "detail": "# 손님이 가장 먼저 들어야 할 한 문장\n\n상품이 어떤 분의 어떤 고민을 덜어 주는지 두 줄로 적어요.\n\n## 이런 분께 추천해요\n\n- 처음 써 보는 분\n- 선물을 고르는 분\n\n> 이 상품을 만든 이유를 한두 문장으로 적어요.\n\n## POINT 1 | 첫 번째 강점\n\n강점을 뒷받침하는 사실(재료·공정·수치)을 적어요.\n\n## 구성\n\n| 항목 | 내용 |\n| 용량 | 500g |\n| 원산지 | 국내 |\n\n## 이렇게 쓰세요\n\n1. 첫 번째 단계\n2. 두 번째 단계\n\n**굵게** 쓰고 싶은 말은 별표 두 개로 감싸요. 관리자 화면의 '한국형 상세 틀 넣기' 버튼을 누르면 전체 틀이 들어가요.",
       "detailImages": [],
       "maxQty": 10,
@@ -51,10 +90,33 @@
       "stock": 20,
       "status": "판매중",
       "featured": true,
-      "badges": ["NEW"],
-      "images": ["shop/images/sample-2.svg"],
-      "options": [{ "name": "색상", "values": [{ "label": "화이트", "add": 0 }, { "label": "블랙", "add": 1000 }] }],
-      "specs": [{ "k": "크기", "v": "10 × 10cm" }],
+      "badges": [
+        "NEW"
+      ],
+      "images": [
+        "shop/images/sample-2.svg"
+      ],
+      "options": [
+        {
+          "name": "색상",
+          "values": [
+            {
+              "label": "화이트",
+              "add": 0
+            },
+            {
+              "label": "블랙",
+              "add": 1000
+            }
+          ]
+        }
+      ],
+      "specs": [
+        {
+          "k": "크기",
+          "v": "10 × 10cm"
+        }
+      ],
       "detail": "옵션마다 추가 금액을 붙일 수 있어요. 블랙은 1,000원이 더해져요.",
       "detailImages": [],
       "maxQty": 5,
@@ -75,13 +137,96 @@
       "status": "품절",
       "featured": false,
       "badges": [],
-      "images": ["shop/images/sample-3.svg"],
+      "images": [
+        "shop/images/sample-3.svg"
+      ],
       "options": [],
       "specs": [],
       "detail": "",
       "detailImages": [],
       "maxQty": 10,
       "createdAt": "2026-11-16"
+    },
+    {
+      "id": "designventures",
+      "sku": "",
+      "name": "디자인벤처스빌딩",
+      "category": "빌딩·부동산",
+      "summary": "논현동 가구거리 대로변 · 지상 7층·지하 1층 · 전시장과 사옥을 품은 공간",
+      "price": null,
+      "priceMode": "inquiry",
+      "stock": null,
+      "status": "판매중",
+      "featured": true,
+      "badges": [],
+      "images": [
+        "shop/images/designventures/image1.jpg",
+        "shop/images/designventures/image2.jpg",
+        "shop/images/designventures/image3.jpg",
+        "shop/images/designventures/image4.jpg",
+        "shop/images/designventures/image5.jpg",
+        "shop/images/designventures/image6.jpg",
+        "shop/images/designventures/image7.jpg"
+      ],
+      "options": [],
+      "specs": [
+        {
+          "k": "소재지",
+          "v": "서울특별시 강남구 논현동 125"
+        },
+        {
+          "k": "대지면적",
+          "v": "842.6㎡ (254.89평)"
+        },
+        {
+          "k": "연면적",
+          "v": "3,964.46㎡ (1,199.25평)"
+        },
+        {
+          "k": "건축구조",
+          "v": "철근콘크리트조"
+        },
+        {
+          "k": "주용도",
+          "v": "판매시설, 문화집회시설, 근린생활시설"
+        },
+        {
+          "k": "용도지역",
+          "v": "제3종일반주거지역"
+        },
+        {
+          "k": "건폐율 / 용적률",
+          "v": "58.33% / 399.89%"
+        },
+        {
+          "k": "건물규모",
+          "v": "지상 7층 / 지하 1층"
+        },
+        {
+          "k": "주차대수",
+          "v": "기계식 16대 + 자주식 8대 (총 24대)"
+        },
+        {
+          "k": "승강기",
+          "v": "승용 1대"
+        },
+        {
+          "k": "사용승인일",
+          "v": "1980년 8월 9일 (2020년 4월 증축·리모델링)"
+        },
+        {
+          "k": "공시지가",
+          "v": "78,678,040원 / 평 (2026년 기준)"
+        },
+        {
+          "k": "매매가",
+          "v": "문의하기"
+        }
+      ],
+      "notice": [],
+      "maxQty": 1,
+      "createdAt": "2026-11-18",
+      "detail": "# 전시장과 사옥을 함께 품은 논현동의 공간\n\n논현동 125에 위치한 지상 7층·지하 1층 건물입니다.\n\n## POINT 1 | 대로변 입지\n\n논현동 가구거리 대로변의 판매·전시·근린생활시설 복합자산입니다.\n\n## POINT 2 | 리모델링 이력\n\n1980년 사용승인, 2020년 4월 증축·리모델링 이력이 제공 자료에 기재돼 있습니다.\n\n## POINT 3 | 활용 방향 협의\n\n사옥·전시장 등의 활용을 검토할 수 있습니다. 명도 일정과 범위, 업종별 인허가는 별도 확인이 필요합니다.\n\n> 가격은 문의하기입니다. 2026년 9월 제공 자료 기준이며 현 매물 상태·명도·거래 조건은 별도 확인이 필요합니다. 주변 개발계획 및 용도 전환은 확정 조건이 아닙니다.\n\n## 사진으로 둘러보기\n\n![사진](shop/images/designventures/image1.jpg)\n![사진](shop/images/designventures/image2.jpg)\n![사진](shop/images/designventures/image3.jpg)\n![사진](shop/images/designventures/image4.jpg)\n![사진](shop/images/designventures/image5.jpg)\n![사진](shop/images/designventures/image6.jpg)\n![사진](shop/images/designventures/image7.jpg)"
     }
   ]
 }
