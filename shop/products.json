@@ -26,6 +26,47 @@
   ],
   "products": [
     {
+      "id": "folding-camping-chair",
+      "sku": "",
+      "name": "접이식 캠핑의자",
+      "category": "캠핑·아웃도어",
+      "summary": "들고 갈 내 자리, 보고 골라요 · 입고 준비 중 · 가격·사양·입고일 미정 · 주문·예약 불가",
+      "price": null,
+      "priceMode": "inquiry",
+      "stock": 0,
+      "status": "품절",
+      "featured": true,
+      "badges": [
+        "입고예정",
+        "가격 미정"
+      ],
+      "images": [
+        "shop/images/folding-camping-chair/reference.png"
+      ],
+      "detailImages": [
+        "shop/images/folding-camping-chair/detail-01.png",
+        "shop/images/folding-camping-chair/detail-02.png",
+        "shop/images/folding-camping-chair/detail-03.png",
+        "shop/images/folding-camping-chair/detail-04.png",
+        "shop/images/folding-camping-chair/detail-05.png",
+        "shop/images/folding-camping-chair/detail-06.png",
+        "shop/images/folding-camping-chair/detail-07.png",
+        "shop/images/folding-camping-chair/detail-08.png",
+        "shop/images/folding-camping-chair/detail-09.png",
+        "shop/images/folding-camping-chair/detail-10.png",
+        "shop/images/folding-camping-chair/detail-11.png",
+        "shop/images/folding-camping-chair/detail-12.png",
+        "shop/images/folding-camping-chair/detail-13.png",
+        "shop/images/folding-camping-chair/detail-14.png"
+      ],
+      "options": [],
+      "specs": [],
+      "notice": [],
+      "maxQty": 1,
+      "createdAt": "2026-11-18",
+      "detail": "# 들고 갈 내 자리, 보고 골라요\n\n접이식 캠핑의자는 현재 입고 준비 중입니다.\n\n> 현재 구매·예약은 불가합니다. 판매가격·최종 사양·입고일은 확정 후 안내하겠습니다.\n\n이미지는 제공받은 참고사진과 이를 활용한 연출 예시입니다. 실제 판매 제품의 외형·로고·색상·구성은 달라질 수 있으며, 무게·하중·착석감·내구성을 입증하는 자료가 아닙니다."
+    },
+    {
       "id": "sample-best",
       "sku": "P-0001",
       "name": "샘플 대표 상품",
